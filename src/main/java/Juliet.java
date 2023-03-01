@@ -30,8 +30,8 @@ public class Juliet extends Thread {
         currentLove = initialLove;
         b = 0.01;
         try {
-            
-			//TO BE COMPLETED
+
+			//TODO Set up socket.
 			
             System.out.println("Juliet: Good pilgrim, you do wrong your hand too much, ...");
         } catch(Exception e) {

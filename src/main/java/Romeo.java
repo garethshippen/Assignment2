@@ -34,7 +34,7 @@ public class Romeo extends Thread {
         a = 0.02;
         try {
             
-			//TO BE COMPLETED
+			//TODO Set up own socket
 			
             System.out.println("Romeo: What lady is that, which doth enrich the hand\n" +
                     "       Of yonder knight?");
@@ -48,6 +48,7 @@ public class Romeo extends Thread {
         System.out.println("Romeo: Did my heart love till now? forswear it, sight! For I ne'er saw true beauty till this night.");
             
 			//TO BE COMPLETED
+            //TODO set up connection with juliet
 			
     }
 

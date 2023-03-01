@@ -1,0 +1,60 @@
+SEE SECTION 4 OF ASSIGNMENT SHEET FOR SUBMISSION INSTRUCTIONS
+DO NOT SUBMIT WHOLE PROJECT
+
+romeo: single thread server
+
+juliet: single thread server
+
+gaps in templates control the client-server communication process
+
+playwriter: client
+communicate with servers
+gets values over time (ie iterations)
+each iteration is a 'verse'
+playwriter requests service from both servers and annotates answers in output
+output dumped into csv file
+
+all exceptions must be dealt with in situ, no throws statements
+
+if exception requires either of ther servers to stop, or client without
+a correct resolution of the request, exit program with code 1.
+
+if all normal exit with code 0
+
+do
+//TO BE COMPLETED sections
+
+no need to add attributes to classes
+additional local variables in methods is allowed
+
+do not alter the method signatures
+
+
+
+
+Flow:
+playwriter.main
+playwriter.writeNovel
+	playwriter.createCharacters
+		Create Romeo Object
+			Set up romeo socket
+		Create Juliet Object
+			Set up juliet socket
+	playwriter.charactersMakeAcquaintances()
+		romeo.getAcquaintance()
+		romeo.start()
+			while(notInterupted)
+			{
+				"Entering service iteration"
+				romeo.receiveLoveLetter()
+					"Awaiting letter"									//Wait for double from Juliet
+
+				romeo.renovateLove()
+				romeo.declareLove()
+				}
+					
+		juliet.getAcquaintance()
+			//get socket from romeo, share own socket
+			"Awaiting letter"
+	playwriter.storyClimax()
+		"Requesting verse x from romeo"
