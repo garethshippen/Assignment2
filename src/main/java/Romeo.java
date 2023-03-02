@@ -35,6 +35,9 @@ public class Romeo extends Thread {
         try {
             
 			//TODO Set up own socket
+            String thisIp = "localhost";
+            int thePort = 6289;
+            ownServerSocket = new ServerSocket(thePort, 50, InetAddress.getByName(thisIp));
 			
             System.out.println("Romeo: What lady is that, which doth enrich the hand\n" +
                     "       Of yonder knight?");
@@ -49,6 +52,7 @@ public class Romeo extends Thread {
             
 			//TO BE COMPLETED
             //TODO set up connection with juliet
+        return new Pair<InetAddress,Integer>(ownServerSocket.getInetAddress(), ownServerSocket.getLocalPort());
 			
     }
 
@@ -58,7 +62,7 @@ public class Romeo extends Thread {
     {
             
 			//TO BE COMPLETED
-			
+            //TODO
         System.out.println("Romeo: O sweet Juliet... (<-" + tmp + ")");
         return tmp;
     }
@@ -78,7 +82,7 @@ public class Romeo extends Thread {
     public void declareLove(){
             
 			//TO BE COMPLETED
-			
+			//TODO
     }
 
 

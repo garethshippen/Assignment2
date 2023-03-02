@@ -32,6 +32,9 @@ public class Juliet extends Thread {
         try {
 
 			//TODO Set up socket.
+            String thisIp = "localhost";
+            int thePort = 8787;
+            ownServerSocket = new ServerSocket(thePort, 50, InetAddress.getByName(thisIp));
 			
             System.out.println("Juliet: Good pilgrim, you do wrong your hand too much, ...");
         } catch(Exception e) {
@@ -45,8 +48,9 @@ public class Juliet extends Thread {
         System.out.println("Juliet: My bounty is as boundless as the sea,\n" +
                 "       My love as deep; the more I give to thee,\n" +
                 "       The more I have, for both are infinite.");
-            
-			//TO BE COMPLETED
+
+            //TODO
+        return new Pair<InetAddress,Integer>(ownServerSocket.getInetAddress(), ownServerSocket.getLocalPort());
 			
     }
 
@@ -55,9 +59,40 @@ public class Juliet extends Thread {
     //Retrieves the lover's love
     public double receiveLoveLetter()
     {
-            
-			//TO BE COMPLETED
-			
+            //TODO
+        StringBuffer myLovesWords = new StringBuffer(""); //StringBuffer is thread safe
+        try
+        {
+            serviceMailbox = ownServerSocket.accept();
+            InputStream aMessageFromMyLove = serviceMailbox.getInputStream();
+            InputStreamReader handmaid = new InputStreamReader(aMessageFromMyLove);
+
+            boolean read = true;
+            char input;
+            char aKissFromMyLove = 'x';
+
+            while(read)
+            {
+                input = (char)handmaid.read();
+
+                if(input == aKissFromMyLove)
+                {
+                    read = false;
+                }
+                else
+                {
+                    myLovesWords.append(input);
+                }
+            }
+            handmaid.close();
+            aMessageFromMyLove.close();
+        } catch (IOException e)
+        {
+            //TODO tidy/improve this exception
+            throw new RuntimeException(e);
+        }
+        double tmp = Double.parseDouble(myLovesWords.toString());
+
         System.out.println("Juliet: Romeo, Romeo! Wherefore art thou Romeo? (<-" + tmp + ")");
         return tmp;
     }
@@ -76,9 +111,16 @@ public class Juliet extends Thread {
 
     //Communicate love back to playwriter
     public void declareLove(){
-            
-			//TO BE COMPLETED
-			
+			//TODO
+
+        try
+        {
+            serviceMailbox.getOutputStream();
+        } catch (IOException e)
+        {
+            //TODO Tidy this exception
+            throw new RuntimeException(e);
+        }
     }
 
 

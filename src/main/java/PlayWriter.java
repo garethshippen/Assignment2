@@ -49,10 +49,18 @@ public class PlayWriter {
         System.out.println("PlayWriter: Romeo enters the stage.");
             
 			//TO BE COMPLETED
+            //TODO
+        double romeosLove = 1.0;
+        myRomeo = new Romeo(romeosLove);
+        myRomeo.start();
 			
         System.out.println("PlayWriter: Juliet enters the stage.");
             
 			//TO BE COMPLETED
+            //TODO
+        double julietsLove = 1.5;
+        myJuliet = new Juliet(julietsLove);
+        myJuliet.start();
 			
     }
 
@@ -60,11 +68,13 @@ public class PlayWriter {
     public void charactersMakeAcquaintances() {
             
 			//TO BE COMPLETED
+            //TODO
 			
         System.out.println("PlayWriter: I've made acquaintance with Romeo");
 
             
 			//TO BE COMPLETED
+            //TODO
 			
         System.out.println("PlayWriter: I've made acquaintance with Juliet");
     }
@@ -75,6 +85,7 @@ public class PlayWriter {
         System.out.println("PlayWriter: Requesting verse " + verse + " from Romeo. -> (" + theNovel[verse-1][1] + ")");
             
 			//TO BE COMPLETED
+            //TODO
 			
     }
 
@@ -84,6 +95,7 @@ public class PlayWriter {
         System.out.println("PlayWriter: Requesting verse " + verse + " from Juliet. -> (" + theNovel[verse-1][0] + ")");
             
 			//TO BE COMPLETED
+            //TODO
 			
     }
 
@@ -94,6 +106,7 @@ public class PlayWriter {
 
             
 			//TO BE COMPLETED
+            //TODO
 			
         System.out.println("PlayWriter: Romeo's verse " + verse + " -> " + theNovel[verse][0]);
     }
@@ -102,6 +115,7 @@ public class PlayWriter {
     public void receiveLetterFromJuliet(int verse) {
             
 			//TO BE COMPLETED
+            //TODO
 			
         System.out.println("PlayWriter: Juliet's verse " + verse + " -> " + theNovel[verse][1]);
     }
@@ -117,6 +131,7 @@ public class PlayWriter {
             System.out.println("PlayWriter: Writing verse " + verse + ".");
             
 			//TO BE COMPLETED
+            //TODO
 			
             System.out.println("PlayWriter: Verse " + verse + " finished.");
         }
@@ -126,6 +141,7 @@ public class PlayWriter {
     public void charactersDeath() {
             
 			//TO BE COMPLETED
+            //TODO
 			
     }
 
