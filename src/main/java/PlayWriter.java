@@ -66,16 +66,19 @@ public class PlayWriter {
 
     //Meet the lovers and start letter communication
     public void charactersMakeAcquaintances() {
-            
-			//TO BE COMPLETED
+
             //TODO
-			
+        Pair<InetAddress,Integer> whereforeArtThou = myRomeo.getAcquaintance();
+        RomeoAddress = whereforeArtThou.getKey();
+        RomeoPort = whereforeArtThou.getValue();
+
         System.out.println("PlayWriter: I've made acquaintance with Romeo");
 
-            
-			//TO BE COMPLETED
             //TODO
-			
+        Pair<InetAddress,Integer> itIsTheEast = myJuliet.getAcquaintance();
+        JulietAddress = itIsTheEast.getKey();
+        JulietPort = itIsTheEast.getValue();
+
         System.out.println("PlayWriter: I've made acquaintance with Juliet");
     }
 
@@ -83,10 +86,19 @@ public class PlayWriter {
     //Request next verse: Send letters to lovers communicating the partner's love in previous verse
     public void requestVerseFromRomeo(int verse) {
         System.out.println("PlayWriter: Requesting verse " + verse + " from Romeo. -> (" + theNovel[verse-1][1] + ")");
-            
-			//TO BE COMPLETED
+
             //TODO
-			
+        try
+        {
+            RomeoMailbox = new Socket(RomeoAddress, RomeoPort);
+        }
+        catch (IOException e)
+        {
+            //TODO Tidy this up.
+            throw new RuntimeException(e);
+        }
+        //TODO You stopped here.
+
     }
 
 
