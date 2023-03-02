@@ -33,8 +33,10 @@ public class Juliet extends Thread {
 
 			//TODO Set up socket.
             String thisIp = "localhost";
-            int thePort = 8787;
-            ownServerSocket = new ServerSocket(thePort, 50, InetAddress.getByName(thisIp));
+            final int THE_PORT = 8787;
+            final int MAX_LOVERS = 1;
+
+            ownServerSocket = new ServerSocket(THE_PORT, MAX_LOVERS, InetAddress.getByName(thisIp));
 			
             System.out.println("Juliet: Good pilgrim, you do wrong your hand too much, ...");
         } catch(Exception e) {
@@ -54,8 +56,6 @@ public class Juliet extends Thread {
 			
     }
 
-
-
     //Retrieves the lover's love
     public double receiveLoveLetter()
     {
@@ -69,24 +69,25 @@ public class Juliet extends Thread {
 
             boolean read = true;
             char input;
-            char aKissFromMyLove = 'x';
+            final char SEALED_WITH_A_KISS = 'x';
 
             while(read)
             {
                 input = (char)handmaid.read();
 
-                if(input == aKissFromMyLove)
+                if(input != SEALED_WITH_A_KISS)
                 {
-                    read = false;
+                    myLovesWords.append(input);
                 }
                 else
                 {
-                    myLovesWords.append(input);
+                    read = false;
                 }
             }
             handmaid.close();
             aMessageFromMyLove.close();
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             //TODO tidy/improve this exception
             throw new RuntimeException(e);
@@ -111,12 +112,18 @@ public class Juliet extends Thread {
 
     //Communicate love back to playwriter
     public void declareLove(){
-			//TODO
-
+        //TODO
         try
         {
-            serviceMailbox.getOutputStream();
-        } catch (IOException e)
+            OutputStream aMessageToMyLove = serviceMailbox.getOutputStream();
+            OutputStreamWriter fairHerald = new OutputStreamWriter(aMessageToMyLove);
+            fairHerald.write(currentLove + "X");
+            fairHerald.flush();
+
+            fairHerald.close();
+            aMessageToMyLove.close();
+        }
+        catch (IOException e)
         {
             //TODO Tidy this exception
             throw new RuntimeException(e);

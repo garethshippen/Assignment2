@@ -5,17 +5,11 @@
  */
 
 
+import java.io.*;
 import java.lang.Thread;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.net.InetAddress;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.IOException;
 
 import javafx.util.Pair;
 
@@ -36,8 +30,10 @@ public class Romeo extends Thread {
             
 			//TODO Set up own socket
             String thisIp = "localhost";
-            int thePort = 6289;
-            ownServerSocket = new ServerSocket(thePort, 50, InetAddress.getByName(thisIp));
+            final int THE_PORT = 6289;
+            final int MAX_LOVERS = 1;
+            
+            ownServerSocket = new ServerSocket(THE_PORT, MAX_LOVERS, InetAddress.getByName(thisIp));
 			
             System.out.println("Romeo: What lady is that, which doth enrich the hand\n" +
                     "       Of yonder knight?");
@@ -63,6 +59,39 @@ public class Romeo extends Thread {
             
 			//TO BE COMPLETED
             //TODO
+        StringBuffer myLovesWords = new StringBuffer(""); //StringBuffer is thread safe
+        try
+        {
+            serviceMailbox = ownServerSocket.accept();
+            InputStream harkAletterFromJuliet = serviceMailbox.getInputStream();
+            InputStreamReader mercutio = new InputStreamReader(harkAletterFromJuliet);
+
+            boolean read = true;
+            char input;
+            final char A_KISS_FROM_MY_LOVE = 'X';
+
+            while(read)
+            {
+                input = (char) mercutio.read();
+
+                if(input != A_KISS_FROM_MY_LOVE)
+                {
+                    myLovesWords.append(input);
+                }
+                else
+                {
+                    read = false;
+                }
+            }
+            mercutio.close();
+            harkAletterFromJuliet.close();
+        }
+        catch (IOException e)
+        {
+            //TODO tidy/improve this exception
+            throw new RuntimeException(e);
+        }
+        double tmp = Double.parseDouble(myLovesWords.toString());
         System.out.println("Romeo: O sweet Juliet... (<-" + tmp + ")");
         return tmp;
     }
@@ -80,9 +109,22 @@ public class Romeo extends Thread {
 
     //Communicate love back to playwriter
     public void declareLove(){
-            
-			//TO BE COMPLETED
 			//TODO
+        try
+        {
+            OutputStream aMessageToMyLove = serviceMailbox.getOutputStream();
+            OutputStreamWriter fairHerald = new OutputStreamWriter(aMessageToMyLove);
+            fairHerald.write(currentLove + "x");
+            fairHerald.flush();
+
+            fairHerald.close();
+            aMessageToMyLove.close();
+        }
+        catch (IOException e)
+        {
+            //TODO Tidy this exception
+            throw new RuntimeException(e);
+        }
     }
 
 

@@ -29,6 +29,9 @@ additional local variables in methods is allowed
 
 do not alter the method signatures
 
+Juliet ends her messages with 'X'
+Romeo ends his messages with 'x'
+
 https://javabook.bloomu.edu/setupjavafx.html
 
 
@@ -58,3 +61,6 @@ playwriter.writeNovel
 			"Awaiting letter"
 	playwriter.storyClimax()
 		"Requesting verse x from romeo"
+
+It's asynchronous.
+Dipstick.
