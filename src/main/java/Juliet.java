@@ -32,7 +32,7 @@ public class Juliet extends Thread {
         try {
 
 			//TODO Set up socket.
-            String thisIp = "localhost";
+            String thisIp = "127.0.0.1";
             final int THE_PORT = 8787;
             final int MAX_LOVERS = 1;
 
