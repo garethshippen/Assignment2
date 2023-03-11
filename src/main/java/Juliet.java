@@ -45,7 +45,7 @@ public class Juliet extends Thread {
     }
 
     //Get acquaintance with lover;
-    // Receives lover's socket information and share's own socket
+    //TODO set up connection with PlayWriter
     public Pair<InetAddress,Integer> getAcquaintance() {
         System.out.println("Juliet: My bounty is as boundless as the sea,\n" +
                 "       My love as deep; the more I give to thee,\n" +

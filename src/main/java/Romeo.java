@@ -47,7 +47,7 @@ public class Romeo extends Thread {
         System.out.println("Romeo: Did my heart love till now? forswear it, sight! For I ne'er saw true beauty till this night.");
             
 			//TO BE COMPLETED
-            //TODO set up connection with juliet
+            //TODO set up connection with PlayWriter
         return new Pair<InetAddress,Integer>(ownServerSocket.getInetAddress(), ownServerSocket.getLocalPort());
 			
     }
