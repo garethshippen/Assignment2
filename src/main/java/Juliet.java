@@ -60,6 +60,8 @@ public class Juliet extends Thread {
     public double receiveLoveLetter()
     {
             //TODO
+        double tmp = 999999;
+        System.out.println("Juliet: Awaiting letter.");
         StringBuffer myLovesWords = new StringBuffer(""); //StringBuffer is thread safe
         try
         {
@@ -86,13 +88,15 @@ public class Juliet extends Thread {
             }
             handmaid.close();
             aMessageFromMyLove.close();
+
+            tmp = Double.parseDouble(myLovesWords.toString());
+            System.out.println("Juliet: Letter received.");
         }
         catch (IOException e)
         {
             //TODO tidy/improve this exception
             throw new RuntimeException(e);
         }
-        double tmp = Double.parseDouble(myLovesWords.toString());
 
         System.out.println("Juliet: Romeo, Romeo! Wherefore art thou Romeo? (<-" + tmp + ")");
         return tmp;
@@ -117,7 +121,9 @@ public class Juliet extends Thread {
         {
             OutputStream aMessageToMyLove = serviceMailbox.getOutputStream();
             OutputStreamWriter fairHerald = new OutputStreamWriter(aMessageToMyLove);
-            fairHerald.write(currentLove + "X");
+            String takeThisMissiveToRomeo = currentLove + "X";
+            System.out.println("Good night, good night! Parting is such sweet sorrow, That I shall say good night till it be morrow (->" + takeThisMissiveToRomeo + ")");
+            fairHerald.write(takeThisMissiveToRomeo);
             fairHerald.flush();
 
             fairHerald.close();

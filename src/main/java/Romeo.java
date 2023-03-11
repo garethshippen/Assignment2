@@ -59,6 +59,8 @@ public class Romeo extends Thread {
             
 			//TO BE COMPLETED
             //TODO
+        double tmp = 999999;
+        System.out.println("Romeo: Entering service iteration.\nAwaiting letter.");
         StringBuffer myLovesWords = new StringBuffer(""); //StringBuffer is thread safe
         try
         {
@@ -83,15 +85,16 @@ public class Romeo extends Thread {
                     read = false;
                 }
             }
+            System.out.println("Romeo: Letter received");
             mercutio.close();
             harkAletterFromJuliet.close();
+            tmp = Double.parseDouble(myLovesWords.toString());
         }
         catch (IOException e)
         {
             //TODO tidy/improve this exception
             throw new RuntimeException(e);
         }
-        double tmp = Double.parseDouble(myLovesWords.toString());
         System.out.println("Romeo: O sweet Juliet... (<-" + tmp + ")");
         return tmp;
     }
@@ -114,11 +117,14 @@ public class Romeo extends Thread {
         {
             OutputStream aMessageToMyLove = serviceMailbox.getOutputStream();
             OutputStreamWriter fairHerald = new OutputStreamWriter(aMessageToMyLove);
-            fairHerald.write(currentLove + "x");
+            String messageToFairJuliet = currentLove + "x";
+            fairHerald.write(messageToFairJuliet);
             fairHerald.flush();
 
             fairHerald.close();
             aMessageToMyLove.close();
+            System.out.println("I would were thy bird. (->" + messageToFairJuliet + ")");
+            System.out.println("Romeo: Exiting service iteration. ");
         }
         catch (IOException e)
         {

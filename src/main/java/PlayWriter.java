@@ -140,10 +140,36 @@ public class PlayWriter {
     public void receiveLetterFromRomeo(int verse) {
         //System.out.println("PlayWriter: Receiving letter from Romeo for verse " + verse + ".");
 
-            
-			//TO BE COMPLETED
-            //TODO
-			
+            //TODO Process response and add to theNovel[verse][0]
+        StringBuffer theWritingsOfRomeo = new StringBuffer("");
+        try
+        {
+            InputStream aMissiveArrivesFromYoungMontague = RomeoMailbox.getInputStream();
+            InputStreamReader hisLovingWords = new InputStreamReader(aMissiveArrivesFromYoungMontague);
+
+            boolean read = true;
+            char aLetter;
+            final char HIS_FINAL_REMARK = 'x';
+            while(read)
+            {
+                aLetter = (char)hisLovingWords.read();
+
+                if(aLetter != HIS_FINAL_REMARK)
+                {
+                    theWritingsOfRomeo.append(aLetter);
+                }
+                else
+                {
+                    read = false;
+                }
+            }
+            //TODO add closers?
+            theNovel[verse][0] = Double.parseDouble(theWritingsOfRomeo.toString());
+        } catch (IOException e)
+        {
+            System.out.println("Problem receiving from Romeo");
+        }
+
         System.out.println("PlayWriter: Romeo's verse " + verse + " -> " + theNovel[verse][0]);
     }
 
@@ -151,8 +177,40 @@ public class PlayWriter {
     public void receiveLetterFromJuliet(int verse) {
             
 			//TO BE COMPLETED
-            //TODO
-			
+            //TODO process response from Juliet and add to theNovel[verse][1]
+        try
+        {
+            InputStream fairJulietSendsWord = JulietMailbox.getInputStream();
+            InputStreamReader wordsLikeMusic = new InputStreamReader(fairJulietSendsWord);
+            StringBuffer sweetSyllableLikeARose = new StringBuffer("");
+
+            boolean read = true;
+            char aLetter;
+            final char FOR_SORROW_FOR_IT_HAS_ENDED = 'X';
+
+            while(read)
+            {
+                aLetter = (char) wordsLikeMusic.read();
+
+                if(aLetter != FOR_SORROW_FOR_IT_HAS_ENDED)
+                {
+                    sweetSyllableLikeARose.append(aLetter);
+                }
+                else
+                {
+                    read = false;
+                }
+            }
+
+            theNovel[verse][1] = Double.parseDouble(sweetSyllableLikeARose.toString());
+
+            //TODO close streams?
+        } catch (IOException e)
+        {
+            System.out.println("Problem receiving from Juliet");
+        }
+
+
         System.out.println("PlayWriter: Juliet's verse " + verse + " -> " + theNovel[verse][1]);
     }
 
@@ -168,6 +226,13 @@ public class PlayWriter {
             
 			//TO BE COMPLETED
             //TODO
+            //do romeo stuff
+            requestVerseFromRomeo(verse);
+            receiveLetterFromRomeo(verse);
+
+            //do juliet stuff
+            requestVerseFromJuliet(verse);
+            receiveLetterFromJuliet(verse);
 			
             System.out.println("PlayWriter: Verse " + verse + " finished.");
         }
@@ -175,9 +240,9 @@ public class PlayWriter {
 
     //Character's death
     public void charactersDeath() {
-            
-			//TO BE COMPLETED
+
             //TODO
+
 			
     }
 
