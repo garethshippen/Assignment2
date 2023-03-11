@@ -71,6 +71,22 @@ public class PlayWriter {
         Pair<InetAddress,Integer> whereforeArtThou = myRomeo.getAcquaintance();
         RomeoAddress = whereforeArtThou.getKey();
         RomeoPort = whereforeArtThou.getValue();
+
+        System.out.println("PlayWriter: I've made acquaintance with Romeo");
+
+            //TODO
+        Pair<InetAddress,Integer> itIsTheEast = myJuliet.getAcquaintance();
+        JulietAddress = itIsTheEast.getKey();
+        JulietPort = itIsTheEast.getValue();
+
+        System.out.println("PlayWriter: I've made acquaintance with Juliet");
+    }
+
+
+    //Request next verse: Send letters to lovers communicating the partner's love in previous verse
+    public void requestVerseFromRomeo(int verse) {
+        System.out.println("PlayWriter: Requesting verse " + verse + " from Romeo. -> (" + theNovel[verse-1][1] + ")");
+
         try
         {
             RomeoMailbox = new Socket(RomeoAddress, RomeoPort);
@@ -79,34 +95,10 @@ public class PlayWriter {
             //TODO tidy
             System.out.println(e);
             System.out.println("ERROR");
-            System.out.println("Problem setting up Romeo socket. charactersMakeAcquiaintances()");
+            System.out.println("Problem setting up Romeo socket. requestVerseFromRomeo()");
             System.exit(1);
         }
 
-        System.out.println("PlayWriter: I've made acquaintance with Romeo");
-
-            //TODO
-        Pair<InetAddress,Integer> itIsTheEast = myJuliet.getAcquaintance();
-        JulietAddress = itIsTheEast.getKey();
-        JulietPort = itIsTheEast.getValue();
-        try
-        {
-            JulietMailbox = new Socket(JulietAddress, JulietPort);
-        } catch (IOException e)
-        {
-            //TODO tidy
-            System.out.println(e);
-            System.out.println("ERROR");
-            System.out.println("Problem setting up Juliet socket. charactersMakeAcquiaintances()");
-            System.exit(1);
-        }
-        System.out.println("PlayWriter: I've made acquaintance with Juliet");
-    }
-
-
-    //Request next verse: Send letters to lovers communicating the partner's love in previous verse
-    public void requestVerseFromRomeo(int verse) {
-        System.out.println("PlayWriter: Requesting verse " + verse + " from Romeo. -> (" + theNovel[verse-1][1] + ")");
 
             //TODO
         //Send value of [verse - 1][1] to Romeo server
@@ -130,6 +122,18 @@ public class PlayWriter {
     //Request next verse: Send letters to lovers communicating the partner's love in previous verse
     public void requestVerseFromJuliet(int verse) {
         System.out.println("PlayWriter: Requesting verse " + verse + " from Juliet. -> (" + theNovel[verse-1][0] + ")");
+
+        try
+        {
+            JulietMailbox = new Socket(JulietAddress, JulietPort);
+        } catch (IOException e)
+        {
+            //TODO tidy
+            System.out.println(e);
+            System.out.println("ERROR");
+            System.out.println("Problem setting up Juliet socket. requestVerseFromJuliet()");
+            System.exit(1);
+        }
 
             //TODO Send value of [verse - 1][0] to Juliet server
         try
