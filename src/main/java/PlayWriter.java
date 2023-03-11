@@ -39,7 +39,7 @@ public class PlayWriter {
     {
         //TODO change this back
         //novelLength = 500; //Number of verses
-        novelLength = 2;
+        novelLength = 10;
         theNovel = new double[novelLength][2];
         theNovel[0][0] = 0;
         theNovel[0][1] = 1;
@@ -49,16 +49,14 @@ public class PlayWriter {
     public void createCharacters() {
         //Create the lovers
         System.out.println("PlayWriter: Romeo enters the stage.");
-            
-			//TO BE COMPLETED
+
             //TODO
         double romeosLove = theNovel[0][0];
         myRomeo = new Romeo(romeosLove);
         myRomeo.start();
 			
         System.out.println("PlayWriter: Juliet enters the stage.");
-            
-			//TO BE COMPLETED
+
             //TODO
         double julietsLove = theNovel[0][1];
         myJuliet = new Juliet(julietsLove);
@@ -116,9 +114,8 @@ public class PlayWriter {
         {
             OutputStream aHeraldToSendMyLove = RomeoMailbox.getOutputStream();
             OutputStreamWriter myWordsOfLove = new OutputStreamWriter(aHeraldToSendMyLove);
-            myWordsOfLove.write(theNovel[verse - 1][1] + "x");
+            myWordsOfLove.write(theNovel[verse - 1][1] + "X");
             myWordsOfLove.flush();
-            aHeraldToSendMyLove.close();
         } catch (IOException e)
         {
             System.out.println(e);
@@ -139,9 +136,8 @@ public class PlayWriter {
         {
             OutputStream aHeraldToSendMyLove = JulietMailbox.getOutputStream();
             OutputStreamWriter myWordsOfLove = new OutputStreamWriter(aHeraldToSendMyLove);
-            myWordsOfLove.write(theNovel[verse-1][0] + "X");
+            myWordsOfLove.write(theNovel[verse-1][0] + "x");
             myWordsOfLove.flush();
-            aHeraldToSendMyLove.close();
         } catch (IOException e)
         {
             System.out.println(e);

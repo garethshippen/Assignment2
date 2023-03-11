@@ -86,8 +86,6 @@ public class Juliet extends Thread {
                     read = false;
                 }
             }
-            handmaid.close();
-            aMessageFromMyLove.close();
 
             tmp = Double.parseDouble(myLovesWords.toString());
             System.out.println("Juliet: Letter received.");
@@ -95,7 +93,8 @@ public class Juliet extends Thread {
         catch (IOException e)
         {
             //TODO tidy/improve this exception
-            throw new RuntimeException(e);
+            System.out.println("ERROR. Juliet.receiveLoveLetter()");
+            System.out.println(e);
         }
 
         System.out.println("Juliet: Romeo, Romeo! Wherefore art thou Romeo? (<-" + tmp + ")");
@@ -125,14 +124,12 @@ public class Juliet extends Thread {
             System.out.println("Good night, good night! Parting is such sweet sorrow, That I shall say good night till it be morrow (->" + takeThisMissiveToRomeo + ")");
             fairHerald.write(takeThisMissiveToRomeo);
             fairHerald.flush();
-
-            fairHerald.close();
-            aMessageToMyLove.close();
         }
         catch (IOException e)
         {
             //TODO Tidy this exception
-            throw new RuntimeException(e);
+            System.out.println("ERROR. Juliet.declareLove()");
+            System.out.println(e);
         }
     }
 

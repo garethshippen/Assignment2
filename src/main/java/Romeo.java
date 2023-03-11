@@ -32,9 +32,10 @@ public class Romeo extends Thread {
             String thisIp = "127.0.0.1";
             final int THE_PORT = 6289;
             final int MAX_LOVERS = 1;
-            
+
             ownServerSocket = new ServerSocket(THE_PORT, MAX_LOVERS, InetAddress.getByName(thisIp));
-			
+            //ownServerSocket = new ServerSocket(THE_PORT);
+
             System.out.println("Romeo: What lady is that, which doth enrich the hand\n" +
                     "       Of yonder knight?");
         } catch(Exception e) {
@@ -71,11 +72,9 @@ public class Romeo extends Thread {
             boolean read = true;
             char input;
             final char A_KISS_FROM_MY_LOVE = 'X';
-
             while(read)
             {
                 input = (char) mercutio.read();
-
                 if(input != A_KISS_FROM_MY_LOVE)
                 {
                     myLovesWords.append(input);
@@ -86,14 +85,14 @@ public class Romeo extends Thread {
                 }
             }
             System.out.println("Romeo: Letter received");
-            mercutio.close();
-            harkAletterFromJuliet.close();
+//            mercutio.close();
+//            harkAletterFromJuliet.close();
             tmp = Double.parseDouble(myLovesWords.toString());
         }
         catch (IOException e)
         {
-            //TODO tidy/improve this exception
-            throw new RuntimeException(e);
+            System.out.println("ERROR Romeo.receiveLoveLetter()");
+            System.out.println(e);
         }
         System.out.println("Romeo: O sweet Juliet... (<-" + tmp + ")");
         return tmp;
@@ -129,7 +128,8 @@ public class Romeo extends Thread {
         catch (IOException e)
         {
             //TODO Tidy this exception
-            throw new RuntimeException(e);
+            System.out.println("ERROR Romeo.declareLove()");
+            System.out.println(e);
         }
     }
 
