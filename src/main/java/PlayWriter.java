@@ -37,9 +37,8 @@ public class PlayWriter {
 
     public PlayWriter()
     {
-        //TODO change this back
-        //novelLength = 500; //Number of verses
-        novelLength = 10;
+        novelLength = 500; //Number of verses
+        //novelLength = 10;
         theNovel = new double[novelLength][2];
         theNovel[0][0] = 0;
         theNovel[0][1] = 1;
