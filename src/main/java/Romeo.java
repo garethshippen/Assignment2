@@ -27,14 +27,12 @@ public class Romeo extends Thread {
         currentLove = initialLove;
         a = 0.02;
         try {
-            
-			//TODO Set up own socket
+
             String thisIp = "localhost";
             final int THE_PORT = 6289;
             final int MAX_LOVERS = 1;
 
             ownServerSocket = new ServerSocket(THE_PORT, MAX_LOVERS, InetAddress.getByName(thisIp));
-            //ownServerSocket = new ServerSocket(THE_PORT);
 
             System.out.println("Romeo: What lady is that, which doth enrich the hand\n" +
                     "       Of yonder knight?");
@@ -46,9 +44,7 @@ public class Romeo extends Thread {
     //Get acquaintance with lover;
     public Pair<InetAddress,Integer> getAcquaintance() {
         System.out.println("Romeo: Did my heart love till now? forswear it, sight! For I ne'er saw true beauty till this night.");
-            
-			//TO BE COMPLETED
-            //TODO set up connection with PlayWriter
+
         return new Pair<InetAddress,Integer>(ownServerSocket.getInetAddress(), ownServerSocket.getLocalPort());
 			
     }
@@ -57,9 +53,7 @@ public class Romeo extends Thread {
     //Retrieves the lover's love
     public double receiveLoveLetter()
     {
-            
-			//TO BE COMPLETED
-            //TODO
+
         double tmp = 999999;
         System.out.println("Romeo: Entering service iteration.\nAwaiting letter.");
         StringBuffer myLovesWords = new StringBuffer(""); //StringBuffer is thread safe
@@ -85,14 +79,13 @@ public class Romeo extends Thread {
                 }
             }
             System.out.println("Romeo: Letter received");
-//            mercutio.close();
-//            harkAletterFromJuliet.close();
             tmp = Double.parseDouble(myLovesWords.toString());
         }
         catch (IOException e)
         {
             System.out.println("ERROR Romeo.receiveLoveLetter()");
             System.out.println(e);
+            System.exit(1);
         }
         System.out.println("Romeo: O sweet Juliet... (<-" + tmp + ")");
         return tmp;
@@ -111,7 +104,6 @@ public class Romeo extends Thread {
 
     //Communicate love back to playwriter
     public void declareLove(){
-			//TODO
         try
         {
             OutputStream aMessageToMyLove = serviceMailbox.getOutputStream();
@@ -130,6 +122,7 @@ public class Romeo extends Thread {
             //TODO Tidy this exception
             System.out.println("ERROR Romeo.declareLove()");
             System.out.println(e);
+            System.exit(1);
         }
     }
 

@@ -51,7 +51,6 @@ public class Juliet extends Thread {
                 "       My love as deep; the more I give to thee,\n" +
                 "       The more I have, for both are infinite.");
 
-            //TODO
         return new Pair<InetAddress,Integer>(ownServerSocket.getInetAddress(), ownServerSocket.getLocalPort());
 			
     }
@@ -59,7 +58,6 @@ public class Juliet extends Thread {
     //Retrieves the lover's love
     public double receiveLoveLetter()
     {
-            //TODO
         double tmp = 999999;
         System.out.println("Juliet: Awaiting letter.");
         StringBuffer myLovesWords = new StringBuffer(""); //StringBuffer is thread safe
@@ -92,9 +90,9 @@ public class Juliet extends Thread {
         }
         catch (IOException e)
         {
-            //TODO tidy/improve this exception
             System.out.println("ERROR. Juliet.receiveLoveLetter()");
             System.out.println(e);
+            System.exit(1);
         }
 
         System.out.println("Juliet: Romeo, Romeo! Wherefore art thou Romeo? (<-" + tmp + ")");
@@ -115,7 +113,6 @@ public class Juliet extends Thread {
 
     //Communicate love back to playwriter
     public void declareLove(){
-        //TODO
         try
         {
             OutputStream aMessageToMyLove = serviceMailbox.getOutputStream();
@@ -127,13 +124,11 @@ public class Juliet extends Thread {
         }
         catch (IOException e)
         {
-            //TODO Tidy this exception
             System.out.println("ERROR. Juliet.declareLove()");
             System.out.println(e);
+            System.exit(1);
         }
     }
-
-
 
     //Execution
     public void run () {
