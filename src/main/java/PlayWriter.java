@@ -87,8 +87,7 @@ public class PlayWriter {
             RomeoMailbox = new Socket(RomeoAddress, RomeoPort);
         } catch (IOException e)
         {
-            System.out.println("ERROR");
-            System.out.println("Problem setting up Romeo socket. PlayWriter.requestVerseFromRomeo()");
+            System.out.println("ERROR PlayWriter.requestVerseFromRomeo(), Socket set up");
             System.out.println(e);
             System.exit(1);
         }
@@ -100,10 +99,10 @@ public class PlayWriter {
             OutputStreamWriter myWordsOfLove = new OutputStreamWriter(aHeraldToSendMyLove);
             myWordsOfLove.write(theNovel[verse - 1][1] + "X");
             myWordsOfLove.flush();
+
         } catch (IOException e)
         {
-            System.out.println("ERROR");
-            System.out.println("Problem setting up Romeo OutputStream. PlayWriter.requestVerseFromRomeo()");
+            System.out.println("ERROR PlayWriter.requestVerseFromRomeo(), OutputStream");
             System.out.println(e);
             System.exit(1);
         }
@@ -120,8 +119,7 @@ public class PlayWriter {
             JulietMailbox = new Socket(JulietAddress, JulietPort);
         } catch (IOException e)
         {
-            System.out.println("ERROR");
-            System.out.println("Problem setting up Juliet socket. PlayWriter.requestVerseFromJuliet()");
+            System.out.println("ERROR PlayWriter.requestVerseFromJuliet(), Socket set up");
             System.out.println(e);
             System.exit(1);
         }
@@ -133,10 +131,10 @@ public class PlayWriter {
             OutputStreamWriter myWordsOfLove = new OutputStreamWriter(aHeraldToSendMyLove);
             myWordsOfLove.write(theNovel[verse-1][0] + "x");
             myWordsOfLove.flush();
+
         } catch (IOException e)
         {
-            System.out.println("ERROR");
-            System.out.println("Problem setting up Juliet OutputStream. requestVerseFromJuliet()");
+            System.out.println("ERROR PlayWriter.requestVerseFromJuliet(), OutputStream");
             System.out.println(e);
             System.exit(1);
         }
@@ -170,11 +168,11 @@ public class PlayWriter {
                     read = false;
                 }
             }
+
             theNovel[verse][0] = Double.parseDouble(theWritingsOfRomeo.toString());
         } catch (IOException e)
         {
-            System.out.println("ERROR");
-            System.out.println("Problem receiving from Romeo. receiveLetterFromRomeo()");
+            System.out.println("ERROR PlayWriter.receiveLetterFromRomeo()");
             System.out.println(e);
             System.exit(1);
         }
@@ -212,11 +210,9 @@ public class PlayWriter {
 
             theNovel[verse][1] = Double.parseDouble(sweetSyllableLikeARose.toString());
 
-            //TODO close streams?
         } catch (IOException e)
         {
-            System.out.println("ERROR");
-            System.out.println("Problem receiving from Juliet. receiveLetterFromJuliet()");
+            System.out.println("ERROR Playwriter.receiveLetterFromJuliet()");
             System.out.println(e);
             System.exit(1);
         }
@@ -232,9 +228,7 @@ public class PlayWriter {
         for (int verse = 1; verse < novelLength; verse++) {
             //Write verse
             System.out.println("PlayWriter: Writing verse " + verse + ".");
-            
-			//TO BE COMPLETED
-            //TODO
+
             //do romeo stuff
             requestVerseFromRomeo(verse);
             receiveLetterFromRomeo(verse);

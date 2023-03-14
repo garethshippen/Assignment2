@@ -31,7 +31,6 @@ public class Juliet extends Thread {
         b = 0.01;
         try {
 
-			//TODO Set up socket.
             String thisIp = "localhost";
             final int THE_PORT = 8787;
             final int MAX_LOVERS = 1;
@@ -45,7 +44,6 @@ public class Juliet extends Thread {
     }
 
     //Get acquaintance with lover;
-    //TODO set up connection with PlayWriter
     public Pair<InetAddress,Integer> getAcquaintance() {
         System.out.println("Juliet: My bounty is as boundless as the sea,\n" +
                 "       My love as deep; the more I give to thee,\n" +
@@ -85,6 +83,7 @@ public class Juliet extends Thread {
                 }
             }
 
+
             tmp = Double.parseDouble(myLovesWords.toString());
             System.out.println("Juliet: Letter received.");
         }
@@ -121,6 +120,7 @@ public class Juliet extends Thread {
             System.out.println("Good night, good night! Parting is such sweet sorrow, That I shall say good night till it be morrow (->" + takeThisMissiveToRomeo + ")");
             fairHerald.write(takeThisMissiveToRomeo);
             fairHerald.flush();
+
         }
         catch (IOException e)
         {

@@ -119,7 +119,6 @@ public class Romeo extends Thread {
         }
         catch (IOException e)
         {
-            //TODO Tidy this exception
             System.out.println("ERROR Romeo.declareLove()");
             System.out.println(e);
             System.exit(1);
